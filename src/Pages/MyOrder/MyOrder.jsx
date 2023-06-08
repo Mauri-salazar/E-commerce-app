@@ -1,7 +1,9 @@
+import { Layout } from "../../Components/Layout/Layout";
+
 export const MyOrder = () => {
   return (
-    <div className="bg-red-100">
+    <Layout className="bg-red-100">
       MyOrder
-    </div>
+    </Layout>
   );
 };

@@ -1,9 +1,9 @@
 import { Layout } from "../../Components/Layout/Layout";
 
-export const MyAccount = () => {
+export const SignIn = () => {
   return (
     <Layout className="bg-red-100">
-      MyAccount
+      Signln
     </Layout>
   );
 };
