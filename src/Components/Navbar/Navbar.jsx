@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../Context/Context";
 import { NavBarLink } from "./NavBarLink";
 import { NavLink } from "react-router-dom";
-
+import { GiShoppingCart } from "@react-icons/all-files/gi/GiShoppingCart";
 
 export const Navbar = () => {
   const context = useContext(ShoppingCartContext);
@@ -66,8 +66,8 @@ export const Navbar = () => {
             Sign In
           </NavBarLink>
         </li>
-        <li>
-          🛒 { context.count }
+        <li className="flex">
+          <GiShoppingCart /> { context.count }
         </li>
       </ul>
     </nav>

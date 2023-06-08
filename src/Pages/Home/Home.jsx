@@ -16,7 +16,10 @@ export const Home = () => {
   return (
     <Layout className="bg-red-100">
       Home
-      <div className="grid grap-4 grid-cols-4 w-full max-w-screen-lg">
+      <div
+        className="grid grid-cols-5
+        w-full max-w-screen-lg"
+      >
         {
           products ? products.map((product) => (
             <Card
