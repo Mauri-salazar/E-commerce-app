@@ -1,4 +1,5 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom';
+import { Context } from '../../Components/Context/Context';
 import { Home } from '../Home/Home';
 import { MyAccount } from '../MyAccount/MyAccount';
 import { MyOrder } from '../MyOrder/MyOrder';
@@ -7,7 +8,7 @@ import { NotFound } from '../NotFound/NotFound';
 import { SignIn } from '../SignIn/SignIn';
 import { Navbar } from '../../Components/Navbar/Navbar'
 import './App.css';
-import { Context } from '../../Components/Context/Context';
+
 
 const AppRoutes = () => {
   let routes = useRoutes([

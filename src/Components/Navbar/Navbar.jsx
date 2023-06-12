@@ -66,8 +66,14 @@ export const Navbar = () => {
             Sign In
           </NavBarLink>
         </li>
-        <li className="flex">
-          <GiShoppingCart /> { context.count }
+        <li className="flex items-center">
+          <GiShoppingCart
+            className="w-7 h-7 text-black cursor-pointer"
+            onClick={() => context.openCheckoutSideMenu()}
+          />
+          <div className="font-medium">
+            { context.count }
+          </div>
         </li>
       </ul>
     </nav>
