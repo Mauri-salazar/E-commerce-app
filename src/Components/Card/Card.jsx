@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ShoppingCartContext } from "../Context/Context";
-import { MdAddShoppingCart } from "@react-icons/all-files/md/MdAddShoppingCart/MdBookmarkAdded";
+import { PlusIcon , CheckIcon } from '@heroicons/react/24/solid';
 
 export const Card = (data) => {
   const context = useContext(ShoppingCartContext);
@@ -11,29 +11,31 @@ export const Card = (data) => {
     context.closeCheckoutSideMenu();
   };
 
-  const [ addedProduct, setAddedProduct ] = useState(false);
-
   const addProcductsToCart = (productData) => {
-      const productIndex = context.cartProducts.findIndex( product => product.id === productData.id);
+    context.setCartProducts([...context.cartProducts, productData]);
+    context.openCheckoutSideMenu();
+    context.closeProductDetail();
+    context.setCount(context.count + 1);
+  };
 
-      if(productIndex >= 0 ) {
-        productData.style.pointerEvents = "none";
+  const renderIcon = (id) => {
+    const isInCart = context.cartProducts.filter( product => product.id === id ).length > 0;
 
-        context.setCartProducts([...context.cartProducts, productData]);
-        setAddedProduct(true);
-
-        context.openCheckoutSideMenu();
-        context.closeProductDetail();
-        context.setCount(context.count + 1);
-      } else {
-        context.setCartProducts([...context.cartProducts, productData]);
-        setAddedProduct(true);
-
-        context.openCheckoutSideMenu();
-        context.closeProductDetail();
-        context.setCount(context.count + 1);
-      }
-
+    if(isInCart) {
+      return (
+        <div className="absolute top-1 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full p-1">
+          <CheckIcon className="pointer-events-none h-6 w-6 text-green-500" />
+        </div>
+      );
+    }else {
+      return (
+        <div
+        className="absolute top-1 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full p-1"
+        onClick={() => addProcductsToCart(data.data)}>
+          <PlusIcon className="h-6 w-6 text-blue-500" />
+        </div>
+      );
+    }
   };
 
   return (
@@ -49,16 +51,7 @@ export const Card = (data) => {
           className="w-full h-full object-cover rounded-lg"
           onClick={() => showProduct(data.data)}
         />
-        <div
-          className="absolute top-0 right-0 flex justify-center bg-white w-6 h-6 rounded-full p-1"
-          onClick={() => addProcductsToCart(data.data)}
-        >
-          {
-            addedProduct ? <MdBookmarkAdded /> :
-            <MdAddShoppingCart />
-          }
-
-        </div>
+        {renderIcon(data.data.id)}
         <p className="flex justify-between">
           <span className="text-sm font-light">{data.data.title}</span>
           <span className="text-lg font-medium">${data.data.price}</span>
