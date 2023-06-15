@@ -34,11 +34,11 @@ export const Home = () => {
       </div>
       {
         isProductDetailOpen  ?
-        <ProductDetail /> : undefined
+        <ProductDetail /> : null
       }
       {
         ischeckoutSideMenu ?
-        <CheckoutSideMenu /> : undefined
+        <CheckoutSideMenu /> : null
       }
     </Layout>
   );

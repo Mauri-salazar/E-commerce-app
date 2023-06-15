@@ -13,7 +13,7 @@ export const Context = ({children}) => {
         .then(resp => resp.json())
         .then(data => setProducts(data));
       setLoading(false);
-    },5000);
+    }, 7000);
   }, []);
 
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
@@ -37,6 +37,9 @@ export const Context = ({children}) => {
     setIsCheckoutSideMenu(false);
   };
 
+  const [order, setOrder] = useState([]);
+
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -50,6 +53,8 @@ export const Context = ({children}) => {
         closeCheckoutSideMenu,
         count,
         setCount,
+        order,
+        setOrder,
         productToDetail,
         setProductToDetail,
         isProductDetailOpen,
