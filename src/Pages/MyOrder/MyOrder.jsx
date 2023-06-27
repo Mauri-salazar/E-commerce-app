@@ -6,7 +6,6 @@ import { Layout } from '../../Components/Layout/Layout';
 
 export const MyOrder = () => {
   const context = useContext(ShoppingCartContext);
-  console.log(context.order.slice(-1)[0]);
 
   return (
     <Layout>

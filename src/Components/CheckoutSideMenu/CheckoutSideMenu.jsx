@@ -14,6 +14,7 @@ export const CheckoutSideMenu = () => {
     context.setCartProducts(filteredProduct);
   };
 
+  console.log(context.cartProducts)
   const handleCheckout = () => {
     const ordeToAdd = {
       date: '12.06.23',
@@ -31,7 +32,7 @@ export const CheckoutSideMenu = () => {
   return (
     <aside className='checkout-side-menu scroll-card flex flex-col fixed right-0 border border-black rounded-lg bg-white '>
       <div className="flex justify-between items-center">
-        <h2 className="font-mediu text-xl p-6">My Order</h2>
+        <h2 className="font-medium text-xl p-6">My Order</h2>
         <div>
           <AiFillCloseCircle
             className="w-6 h-6 text-red-500 cursor-pointer  "
@@ -46,7 +47,7 @@ export const CheckoutSideMenu = () => {
               key={product.id}
               id={product.id}
               title={product.title}
-              image={product.images[0]}
+              imageUrl={product.images}
               price={product.price}
               handleDelete={handleDelete}
             />
