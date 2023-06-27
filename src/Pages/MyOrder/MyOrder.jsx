@@ -1,10 +1,12 @@
 import { useContext } from 'react'
-import { ShoppingCartContext } from '../../Context'
-import Layout from '../../Components/Layout/Layout'
-import OrderCard from '../../Components/OrderCard'
+import { OrderCard } from '../../Components/OrderCard/OrderCard';
+import { ShoppingCartContext } from '../../Components/Context/Context';
+import { Layout } from '../../Components/Layout/Layout';
+
 
 export const MyOrder = () => {
-  const context = useContext(ShoppingCartContext)
+  const context = useContext(ShoppingCartContext);
+  console.log(context.order.slice(-1)[0]);
 
   return (
     <Layout>
