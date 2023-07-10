@@ -5,6 +5,7 @@ export const ShoppingCartContext = createContext();
 
 export const Context = ({children}) => {
   const [loading, setLoading] = useState(true);
+  //get products
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
@@ -15,6 +16,22 @@ export const Context = ({children}) => {
       setLoading(false);
     }, 7000);
   }, []);
+
+  //search product
+  const [searchProduct, setSearchProduct] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState(null);
+
+  const filteredProductByTitle = (products, searchProduct) => {
+    return products?.filter( p => p.title.toLowerCase().includes(searchProduct.toLowerCase()));
+  };
+
+  useEffect(() => {
+    if(searchProduct) setFilteredProducts(filteredProductByTitle(products, searchProduct));
+  
+  }, [products, searchProduct]);
+  
+  console.log(filteredProducts)
+  
 
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [productToDetail, setProductToDetail] = useState({});
@@ -46,6 +63,9 @@ export const Context = ({children}) => {
         loading,
         setLoading,
         products,
+        searchProduct,
+        setSearchProduct,
+        filteredProducts,
         cartProducts,
         setCartProducts,
         ischeckoutSideMenu,

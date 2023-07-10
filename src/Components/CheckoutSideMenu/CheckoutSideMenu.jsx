@@ -14,7 +14,7 @@ export const CheckoutSideMenu = () => {
     context.setCartProducts(filteredProduct);
   };
 
-  console.log(context.cartProducts)
+  // console.log(context.cartProducts)
   const handleCheckout = () => {
     const ordeToAdd = {
       date: '12.06.23',

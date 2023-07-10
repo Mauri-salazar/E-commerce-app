@@ -12,29 +12,54 @@ export const Home = () => {
     loading,
     products,
     isProductDetailOpen,
-    ischeckoutSideMenu
+    ischeckoutSideMenu,
+    searchProduct,
+    setSearchProduct,
+    filteredProducts
   } = useContext(ShoppingCartContext);
 
+  const renderView = () => {
+    if (searchProduct?.length > 0) {
+      if (filteredProducts?.length > 0) {
+        return (
+          filteredProducts?.map(p => (
+            <Card key={p.id} data={p} />
+          ))
+        )
+      } else {
+        return (
+          <div>We don't have anything :(</div>
+        )
+      }
+    } else {
+      return (
+          products?.map(product => (
+          <Card key={product.id} data={product} />
+        ))
+      )
+    }
+  }
   return (
     <Layout className="bg-red-100">
-      Home
-      <div
-        className="grid  grid-cols-4
-        w-full max-w-screen-lg"
-      >
+      <div className="flex items-center justify-center relative w-80">
+        <h1  className="font-medium text-xl p-6">Products</h1>
+      </div>
+      <input 
+        type="text" 
+        placeholder="Search a product" 
+        className="rounded-lg border border-black w-80 p-2 mb-4 focus:outline-none"
+        onChange={(e) => setSearchProduct(e.target.value) }
+      />       
+      <div className="grid  grid-cols-4 w-full max-w-screen-lg">
         {
           loading ? <Loading loading={loading} />
-          : products ? products.map((product) => (
-              <Card
-                key={product.id}
-                data={product}
-              />
-            )) : null
+          : renderView()
         }
       </div>
       {
         isProductDetailOpen  ?
         <ProductDetail /> : null
+
       }
       {
         ischeckoutSideMenu ?

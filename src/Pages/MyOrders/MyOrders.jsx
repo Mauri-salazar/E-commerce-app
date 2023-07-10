@@ -1,9 +1,28 @@
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../Components/Context/Context";
 import { Layout } from "../../Components/Layout/Layout";
+import { Link } from "react-router-dom";
+import { OrdersCard } from "../../Components/OrdersCard/OrdersCard";
+
 
 export const MyOrders = () => {
+  const context = useContext(ShoppingCartContext);
+  console.log(context.order)
   return (
-    <Layout className="bg-red-100">
-      MyOrders
+    <Layout>
+      <div className="flex items-center justify-center relative w-80">
+        <h1  className="font-medium text-xl p-6">My Orders</h1>
+      </div>
+      {
+        context.order.map((order, index) => (
+          <Link key={index} to={`/my-orders/${index}`}>
+            <OrdersCard 
+              totalPrice={order.totalPrice}
+              totalProducts={order.totalProducts}
+            />
+          </Link>
+        ))
+      } 
     </Layout>
   );
 };
