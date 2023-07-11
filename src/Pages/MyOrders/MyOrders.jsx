@@ -7,7 +7,7 @@ import { OrdersCard } from "../../Components/OrdersCard/OrdersCard";
 
 export const MyOrders = () => {
   const context = useContext(ShoppingCartContext);
-  console.log(context.order)
+
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80">

@@ -17,32 +17,32 @@ export const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavBarLink to="/" activeStyle={activeStyle}>
+          <NavBarLink onClick={() => context.setSearchCategory()} to="/" activeStyle={activeStyle}>
             All
           </NavBarLink>
         </li>
         <li>
-          <NavBarLink to="/clothes" activeStyle={activeStyle}>
+          <NavBarLink onClick={() => context.setSearchCategory('clothes')} to="/clothes" activeStyle={activeStyle}>
             Clothes
           </NavBarLink>
         </li>
         <li>
-          <NavBarLink to="/electronics" activeStyle={activeStyle}>
+          <NavBarLink onClick={() => context.setSearchCategory('electronics')} to="/electronics" activeStyle={activeStyle}>
             Electronics
           </NavBarLink>
         </li>
         <li>
-          <NavBarLink to="/furnitures" activeStyle={activeStyle}>
+          <NavBarLink onClick={() => context.setSearchCategory('furnitures')} to="/furnitures" activeStyle={activeStyle}>
             Furnitures
           </NavBarLink>
         </li>
         <li>
-          <NavBarLink to="/toys" activeStyle={activeStyle}>
+          <NavBarLink onClick={() => context.setSearchCategory('toys')} to="/toys" activeStyle={activeStyle}>
             Toys
           </NavBarLink>
         </li>
         <li>
-          <NavBarLink to="/others" activeStyle={activeStyle}>
+          <NavBarLink onClick={() => context.setSearchCategory('others')} to="/others" activeStyle={activeStyle}>
             Others
           </NavBarLink>
         </li>

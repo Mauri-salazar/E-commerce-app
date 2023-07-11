@@ -29,9 +29,10 @@ export const Context = ({children}) => {
     if(searchProduct) setFilteredProducts(filteredProductByTitle(products, searchProduct));
   
   }, [products, searchProduct]);
-  
-  console.log(filteredProducts)
-  
+
+  //Filter category product
+  const [searchCategory, setSearchCategory] = useState(null);
+
 
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [productToDetail, setProductToDetail] = useState({});
@@ -66,6 +67,7 @@ export const Context = ({children}) => {
         searchProduct,
         setSearchProduct,
         filteredProducts,
+        setSearchCategory,
         cartProducts,
         setCartProducts,
         ischeckoutSideMenu,
