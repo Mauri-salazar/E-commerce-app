@@ -19,7 +19,6 @@ export const Home = () => {
   } = useContext(ShoppingCartContext);
 
   const renderView = () => {
-    if (searchProduct?.length > 0) {
       if (filteredProducts?.length > 0) {
         return (
           filteredProducts?.map(p => (
@@ -28,16 +27,9 @@ export const Home = () => {
         )
       } else {
         return (
-          <div>We don't have anything :(</div>
+          <div className="fle border border-black"> We don't have anything :(</div>
         )
-      }
-    } else {
-      return (
-          products?.map(product => (
-          <Card key={product.id} data={product} />
-        ))
-      )
-    }
+      }  
   }
   return (
     <Layout className="bg-red-100">

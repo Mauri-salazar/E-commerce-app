@@ -13,13 +13,13 @@ export const Navbar = () => {
       <ul className="flex items-center gap-3">
         <li className="font-semibold text-lg">
           <NavLink to="/">
-            Shopi
+            Shopi 
           </NavLink>
         </li>
         <li>
-          <NavBarLink to="/" activeStyle={activeStyle}>
+          <NavLink to="/" onClick={() => setSearchCategory()} className={({ isActive }) => isActive ? activeStyle : undefined }>
             All
-          </NavBarLink>
+          </NavLink>
         </li>
         <li>
           <NavBarLink to="/clothes" activeStyle={activeStyle}>
@@ -32,13 +32,8 @@ export const Navbar = () => {
           </NavBarLink>
         </li>
         <li>
-          <NavBarLink to="/furnitures" activeStyle={activeStyle}>
-            Furnitures
-          </NavBarLink>
-        </li>
-        <li>
-          <NavBarLink to="/toys" activeStyle={activeStyle}>
-            Toys
+          <NavBarLink to="/shoes" activeStyle={activeStyle}>
+            Shoes
           </NavBarLink>
         </li>
         <li>
@@ -72,7 +67,7 @@ export const Navbar = () => {
             onClick={() => context.openCheckoutSideMenu()}
           />
           <div className="font-medium">
-            { context.count }
+            { context.cartProducts.length }
           </div>
         </li>
       </ul>

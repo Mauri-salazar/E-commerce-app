@@ -26,6 +26,7 @@ export const CheckoutSideMenu = () => {
     context.setOrder([...context.order, ordeToAdd]);
     context.setCount(0);
     context.setCartProducts([]);
+    context.setSearchProduct(null); 
   };
 
 

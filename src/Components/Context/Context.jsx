@@ -14,8 +14,8 @@ export const Context = ({children}) => {
         .then(resp => resp.json())
         .then(data => setProducts(data));
       setLoading(false);
-    }, 7000);
-  }, []);
+    }, 1000);
+  }, [loading]);
 
   //search product
   const [searchProduct, setSearchProduct] = useState(null);
@@ -32,12 +32,30 @@ export const Context = ({children}) => {
     return products?.filter( p => p.category.name.toLowerCase().includes(searchCategory.toLowerCase()));
   };
   
+  const filterBy = (searchType, products, searchProduct, searchCategory) => {
+    
+    if (!searchType) {
+      return products;
+    }
+    if (searchType === 'BY_TITLE') {
+      return filteredProductByTitle(products, searchProduct);
+    } 
+    if (searchType === 'BY_CATEGORY') {
+      return filteredProductByCategory(products, searchCategory);
+    }
+    if (searchType === 'BY_CATEGORY_AND_TITLE') {
+      return filteredProductByCategory(products, searchCategory).filter(p => p.title.toLowerCase().includes(searchProduct.toLowerCase()));
+    }
+  };
+
   //filter products 
   const [filteredProducts, setFilteredProducts] = useState(null);
   
   useEffect(() => {
-    if(searchProduct) setFilteredProducts(filteredProductByTitle(products, searchProduct));
-    if(searchCategory) setFilteredProducts(filteredProductByCategory(products, searchCategory));
+    if(!searchCategory && !searchProduct) setFilteredProducts(filterBy(null, products,searchProduct, searchCategory));
+    if(searchCategory && searchProduct) setFilteredProducts(filterBy('BY_CATEGORY_AND_TITLE', products,searchProduct, searchCategory));
+    if(searchProduct && !searchCategory) setFilteredProducts(filterBy('BY_TITLE', products, searchProduct));
+    if(searchCategory && !searchProduct) setFilteredProducts(filterBy('BY_CATEGORY', products,searchProduct, searchCategory));
   }, [products, searchProduct, searchCategory]);
 
   console.log(filteredProducts)
