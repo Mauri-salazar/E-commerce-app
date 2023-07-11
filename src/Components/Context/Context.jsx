@@ -19,20 +19,28 @@ export const Context = ({children}) => {
 
   //search product
   const [searchProduct, setSearchProduct] = useState(null);
-  const [filteredProducts, setFilteredProducts] = useState(null);
+  
 
   const filteredProductByTitle = (products, searchProduct) => {
     return products?.filter( p => p.title.toLowerCase().includes(searchProduct.toLowerCase()));
   };
 
-  useEffect(() => {
-    if(searchProduct) setFilteredProducts(filteredProductByTitle(products, searchProduct));
-  
-  }, [products, searchProduct]);
-
   //Filter category product
   const [searchCategory, setSearchCategory] = useState(null);
 
+  const filteredProductByCategory = (products, searchCategory) => {
+    return products?.filter( p => p.category.name.toLowerCase().includes(searchCategory.toLowerCase()));
+  };
+  
+  //filter products 
+  const [filteredProducts, setFilteredProducts] = useState(null);
+  
+  useEffect(() => {
+    if(searchProduct) setFilteredProducts(filteredProductByTitle(products, searchProduct));
+    if(searchCategory) setFilteredProducts(filteredProductByCategory(products, searchCategory));
+  }, [products, searchProduct, searchCategory]);
+
+  console.log(filteredProducts)
 
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [productToDetail, setProductToDetail] = useState({});
@@ -67,6 +75,7 @@ export const Context = ({children}) => {
         searchProduct,
         setSearchProduct,
         filteredProducts,
+        searchCategory,
         setSearchCategory,
         cartProducts,
         setCartProducts,
