@@ -3,6 +3,7 @@ import { Card } from "../../Components/Card/Card";
 import { Layout } from "../../Components/Layout/Layout";
 import { ProductDetail } from "../../Components/ProductDetail/ProductDetail";
 import { ShoppingCartContext } from "../../Components/Context/Context";
+import { NotFound } from '../NotFound/NotFound';
 import { Loading } from "../../Components/Loading/Loading";
 import { CheckoutSideMenu } from "../../Components/CheckoutSideMenu/CheckoutSideMenu";
 
@@ -27,7 +28,7 @@ export const Home = () => {
         )
       } else {
         return (
-          <div className="fle border border-black"> We don't have anything :(</div>
+          <NotFound />
         )
       }  
   }

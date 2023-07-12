@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import PropTypes  from "prop-types";
 import { createContext, useEffect, useState } from "react";
 
@@ -14,12 +15,14 @@ export const Context = ({children}) => {
         .then(resp => resp.json())
         .then(data => setProducts(data));
       setLoading(false);
-    }, 1000);
-  }, [loading]);
+    }, 2000);
+  }, []);
 
   //search product
   const [searchProduct, setSearchProduct] = useState(null);
   
+  console.log(searchProduct);
+  console.log('p',products);
 
   const filteredProductByTitle = (products, searchProduct) => {
     return products?.filter( p => p.title.toLowerCase().includes(searchProduct.toLowerCase()));

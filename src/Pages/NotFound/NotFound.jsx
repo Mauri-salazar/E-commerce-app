@@ -1,9 +1,14 @@
+import { ExclamationCircleIcon } from '@heroicons/react/24/solid';
 import { Layout } from "../../Components/Layout/Layout";
+import './ notFound.css';
 
 export const NotFound = () => {
   return (
-    <Layout className="bg-red-100">
-      NotFound
+    <Layout> 
+      <div className='icon-notFound'>   
+        <ExclamationCircleIcon/>
+        Product not found 
+      </div> 
     </Layout>
-  );
-};
+  )
+}
