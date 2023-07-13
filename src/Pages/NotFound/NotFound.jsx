@@ -5,7 +5,7 @@ import './ notFound.css';
 export const NotFound = () => {
   return (
     <Layout> 
-      <div className='icon-notFound'>   
+      <div className='icon-notFound dark:text-white'>   
         <ExclamationCircleIcon/>
         Product not found 
       </div> 

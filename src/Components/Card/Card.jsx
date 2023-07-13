@@ -39,10 +39,10 @@ export const Card = (data) => {
   };
 
   return (
-    <div className="bg-white cursor-pointer w-58 h-60 rounded-lg p-2">
+    <div className="bg-white cursor-pointer w-58 h-60 rounded-lg p-2  bg-white dark:bg-black">
       <figure className="relative mb-2 w-full h-4/5">
         <span
-        className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
+        className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 ">
           {data.data.category.name}
         </span>
         <img
@@ -52,7 +52,7 @@ export const Card = (data) => {
           onClick={() => showProduct(data.data)}
         />
         {renderIcon(data.data.id)}
-        <p className="flex justify-between">
+        <p className="flex justify-between  text-black dark:text-white">
           <span className="text-sm font-light">{data.data.title}</span>
           <span className="text-lg font-medium">${data.data.price}</span>
         </p>

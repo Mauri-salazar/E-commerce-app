@@ -21,8 +21,6 @@ export const Context = ({children}) => {
   //search product
   const [searchProduct, setSearchProduct] = useState(null);
   
-  console.log(searchProduct);
-  console.log('p',products);
 
   const filteredProductByTitle = (products, searchProduct) => {
     return products?.filter( p => p.title.toLowerCase().includes(searchProduct.toLowerCase()));
@@ -61,7 +59,6 @@ export const Context = ({children}) => {
     if(searchCategory && !searchProduct) setFilteredProducts(filterBy('BY_CATEGORY', products,searchProduct, searchCategory));
   }, [products, searchProduct, searchCategory]);
 
-  console.log(filteredProducts)
 
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [productToDetail, setProductToDetail] = useState({});
@@ -87,6 +84,30 @@ export const Context = ({children}) => {
   const [order, setOrder] = useState([]);
 
 
+  //dark mode 
+
+  const [darkMode, setDarkMode] = useState(null);
+
+  useEffect(() => {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setDarkMode('dark');
+    }else {
+      setDarkMode('light');
+    }
+  }, []);
+
+  useEffect(() => {
+    if(darkMode === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  });
+  
+  const handleDarkMode = () => {
+    setDarkMode(darkMode === 'dark' ? 'light' : 'dark');
+  };
+  
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -112,6 +133,8 @@ export const Context = ({children}) => {
         isProductDetailOpen,
         openProductDetail,
         closeProductDetail,
+        darkMode,
+        handleDarkMode
       }}
     >
       {children}

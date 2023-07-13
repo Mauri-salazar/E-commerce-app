@@ -6,7 +6,7 @@ export const OrdersCard = (props) => {
     const {totalPrice, totalProducts} = props;
 
     return (
-        <div className='flex justify-between items-center w-80 h-50 p-4 mb-4 first-letter: border-2 border-black rounded-md'>
+        <div className='flex dark:text-white justify-between items-center w-80 h-50 p-4 mb-4 first-letter: border-2 border-black rounded-md  bg-white dark:bg-black'>
             <p className='flex'>{<CalendarDaysIcon className='w-5'/>}2.7.23</p>
             <span className='flex'>{<ShoppingCartIcon className='w-5' />}{totalProducts}</span> 
             <span className="font-bold">${totalPrice}</span>

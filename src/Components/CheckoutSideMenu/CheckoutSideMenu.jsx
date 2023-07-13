@@ -31,9 +31,9 @@ export const CheckoutSideMenu = () => {
 
 
   return (
-    <aside className='checkout-side-menu scroll-card flex flex-col fixed right-0 border border-black rounded-lg bg-white '>
+    <aside className='checkout-side-menu scroll-card flex flex-col fixed right-0 border border-black rounded-lg  bg-white dark:bg-black '>
       <div className="flex justify-between items-center">
-        <h2 className="font-medium text-xl p-6">My Order</h2>
+        <h2 className="font-medium text-xl p-6   dark:text-white">My Order</h2>
         <div>
           <AiFillCloseCircle
             className="w-6 h-6 text-red-500 cursor-pointer  "
@@ -41,7 +41,7 @@ export const CheckoutSideMenu = () => {
           />
         </div>
       </div>
-      <div className="px-6 flex-1">
+      <div className="px-6 flex-1  dark:text-white">
         {
           context.cartProducts.map((product) => (
             <OrderCard
@@ -57,11 +57,11 @@ export const CheckoutSideMenu = () => {
       </div>
       <div className="px-6 mb-5">
         <p className="flex justify-between items-center mb-2">
-          <span className="font-bold">Total:</span>
-          <span className="font-medium text-2xl">${totalPrice(context.cartProducts)}</span>
+          <span className="font-bold  dark:text-white">Total:</span>
+          <span className="font-medium text-2xl dark:text-white">${totalPrice(context.cartProducts)}</span>
         </p>
         <Link to='/my-orders/last'>
-          <button className="w-full bg-black py-3 text-white rounded-lg"  onClick={() => handleCheckout()}>Checkout</button>
+          <button className="w-full bg-black dark:bg-white   py-3 dark:text-black rounded-lg"  onClick={() => handleCheckout()}>Checkout</button>
         </Link>
       </div>
     </aside>

@@ -35,7 +35,7 @@ export const Home = () => {
   return (
     <Layout className="bg-red-100">
       <div className="flex items-center justify-center relative w-80">
-        <h1  className="font-medium text-xl p-6">Products</h1>
+        <h1  className="font-medium text-xl p-6  text-black dark:text-white">Products</h1>
       </div>
       <input 
         type="text" 
