@@ -1,6 +1,7 @@
 # E-commerce-app
 
 This project was created with Vite Js + React Js and tailwind, it is the e-commerce.
+URL: https://shopig-ecommerce.netlify.app/
 
 ## Characteristics
 
